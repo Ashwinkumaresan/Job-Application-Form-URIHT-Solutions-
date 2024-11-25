@@ -1,0 +1,156 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'poppons', sans-serif;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: rgb(23, 23, 34);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input_box{
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+    margin-bottom: 15px;
+}
+.input_box .label{
+    font-size: 13px;
+    font-weight: 700;
+    color: rgb(23, 23, 34);
+    position: absolute;
+    left: 4%;
+    top: -15%;
+    background-color: #ccc;
+    border-radius: 6px;
+    padding: 1px 30px;
+    border-left: 5px solid rgb(23, 23, 34);
+    border-right: 5px solid rgb(23, 23, 34);
+}
+.input_box input, .input_box textarea{
+    width: 100%;
+    height: 60px;
+    padding: 0px 20px;
+    border: 1px solid white;
+    outline: none;
+    color: #fff;
+    background: transparent;
+}
+.input_box textarea{
+    padding-top: 15px;
+}
+.input_box input:focus, .input_box textarea:focus{
+    border: 1px solid #ff005d;
+}
+input[type="file"]{
+    display: block;
+}
+body:has(#box1 input:focus) #box1 label{
+    background-color: #ff005d; 
+}
+body:has(#box2 input:focus) #box2 label{
+    background-color: #ff005d; 
+}
+body:has(#box3 input:focus) #box3 label{
+    background-color: #ff005d; 
+}
+body:has(#box4 input:focus) #box4 label{
+    background-color: #ff005d; 
+}
+body:has(#box5 input:focus) #box5 label{
+    background-color: #ff005d; 
+}
+body:has(#box6 input:focus) #box6 label{
+    background-color: #ff005d; 
+}
+body:has(#box1:hover) #box1 label{
+    background-color: #ff005d; 
+}
+body:has(#box2:hover), body:has(#box2:hover) #box2 label{
+    background-color: #ff005d; 
+}
+body:has(#box3:hover) #box3 label{
+    background-color: #ff005d; 
+}
+body:has(#box4:hover) #box4 label{
+    background-color: #ff005d; 
+}
+body:has(#box5:hover) #box5 label{
+    background-color: #ff005d; 
+}
+body:has(#box6:hover) #box6 label{
+    background-color: #ff005d; 
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: rgb(94, 94, 94);
+}
+.selection_box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 400px;
+    max-width: 90%;
+    position: relative;
+    margin-bottom: 15px;
+}
+.selection_box label{
+    font-size: 13px;
+    font-weight: 700;
+    color: rgb(23, 23, 34);
+    position: absolute;
+    left: 4%;
+    top: -15%;
+    background-color: #ccc;
+    border-radius: 6px;
+    padding: 1px 3px;
+    border-left: 5px solid rgb(23, 23, 34);
+    border-right: 5px solid rgb(23, 23, 34);
+}
+.selection_box select{
+    font-size: 15px;
+    width: 100%;
+    height: 60px;
+    padding: 0px 20px;
+    border: 1px solid white;
+    outline: none;
+    color: rgb(123, 123, 123);
+    background: transparent; 
+}
+.selection_box select:hover, .selection_box select:focus, input:hover, textarea:hover{
+    border: 1px solid #ff005d;
+}
+.selection_box option{
+    color: rgb(23, 23, 34);
+}
+.selection_box option{
+    color: white;
+    background-color: black;
+}
+button{
+    font-size: 20px;
+    padding: 5px 20px;
+    border-radius: 4px;
+    outline: none;
+    background-color: #ff005d;
+    border: none;
+    color: #ccc;
+    border: 2px solid #ff005d;
+    cursor: pointer;
+}
+button:hover{
+    background-color: rgb(23, 23, 34);
+}
+::placeholder{
+    font-size: 15px;
+}

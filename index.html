@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="uploadForm" >
+        <div class="container">
+            <!-- Name input field -->
+            <div class="input_box" title="Enter your name" id="box1">
+                <label for="name" class="label" id="lab_change2" >Your name</label>
+                <input type="text" placeholder="Name" id="name" required>
+            </div>
+            <!-- Email input field -->
+            <div class="email input_box" title="Enter your email" id="box2">
+                <label for="email" class="label" id="lab_change3" >Your email</label>
+                <input type="text" placeholder="Email" id="email" required>
+            </div>
+            <!-- Number input field -->
+            <div class="input_box" title="Enter your phone number" id="box3">
+                <label for="number" class="label" id="lab_change" >Your number</label>
+                <input type="tel" placeholder="Contact number" id="number" required> 
+            </div>
+            <!-- Address input field -->
+            <div class="input_box" title="Enter your address" id="box4">
+                <label for="address" class="label" id="lab_change4" >Your address</label>
+                <textarea name="Address" id="address" placeholder="Address" required></textarea>
+            </div>
+            <!-- Job position -->
+             <div class="selection_box" title="Select your position" id="box5">
+                 <label for="options" class="label" >Job positions</label>
+                 <select id="options" name="options" required>
+                     <option value="" disabled selected>Select a position to be applied</option>
+                     <option value="Full Stack">Full Stack</option>
+                     <option value="UI">UI</option>
+                     <option value="UX">UX</option>
+                     <option value="Data Analysts">Data Analysts</option>
+                 </select>
+             </div>
+            <!-- File CVs or resume input field -->
+            <div class="input_box" title="Select your resume or CVs" id="box6">
+                <input type="file" id="resume" name="resume" accept=".pdf, .doc, .docx" required style="padding-top: 17px; cursor: pointer;">
+            </div>
+            <button type="submit" id="button">Submit</button>
+        </div>
+    </form>
+    <script>
+
+        // Variable declaration
+        var name_ = document.getElementById("name");
+        var num = document.getElementById("number");
+        var mail = document.getElementById("email");
+        var address_ = document.getElementById("address");
+        var options_ = document.getElementById("options");
+        var btn = document.getElementById("button");
+        var lab = document.getElementsByClassName("label");
+        var lab_change_ = document.getElementById("lab_change");
+        var lab_change_2 = document.getElementById("lab_change2");
+        var lab_change_3 = document.getElementById("lab_change3");
+        var lab_change_4 = document.getElementById("lab_change4");
+        var selection = document.getElementsByClassName("selection_box");
+
+        
+
+        // For the number field
+        num.addEventListener('input', () => {
+            sessionStorage.setItem("Phone number", num.value); // Set the number to the session storage
+
+            const phoneInput = event.target;
+            const onlyNumbers = phoneInput.value.replace(/\D/g, ""); // Remove non-numeric characters
+            phoneInput.value = onlyNumbers; // Update input with only digits
+
+            // Validation for numbers
+            if(num.value.length === 10){
+                num.style.borderColor = "Green"
+                lab_change_.style.backgroundColor = "green"
+            }
+            else{
+                num.style.borderBlockColor = "#ff005d "
+            }
+        })
+
+        // For the name filed
+        name_.addEventListener('input', () =>{
+            sessionStorage.setItem("Name", name_.value); // Set the name to the session storage
+
+            const nameInput = event.target;
+            const validName = nameInput.value.replace(/[^A-Za-z\s-]/g, ""); // Remove non-alphabetic characters
+            nameInput.value = validName; // Update input with only alphabetic characters
+
+            // Validation for name
+            if(name_.value.length > 0){
+                name_.style.borderColor = "Green";
+                lab_change_2.style.backgroundColor = "green"
+            }
+            else{
+                name_.style.borderColor = "#ff005d"
+                lab_change_2.style.backgroundColor = "#ff005d"
+            }
+        })
+
+        // For the email field
+        email.addEventListener('input', () =>{
+            sessionStorage.setItem("Email", email.value); // Set the email to the session storage
+
+            // Validation for email
+            if(email.value.length > 0){
+                email.style.borderColor = "Green"
+                lab_change_3.style.backgroundColor = "green"
+            }
+            else{
+                email.style.borderColor = "#ff005d"
+                lab_change_3.style.backgroundColor = "#ff005d"
+            }
+        })
+
+        // For the address field
+        address_.addEventListener('input', () =>{
+            sessionStorage.setItem("Address", address_.value); // Set the address to the session storage
+
+            // Validation for address
+            if(address_.value.length > 0){
+                address_.style.borderColor = "Green"
+                lab_change_4.style.backgroundColor = "green"
+            }
+            else{
+                address_.style.borderColor = "#ff005d"
+                lab_change_4.style.backgroundColor = "#ff005d"
+            }
+        })
+
+        // For the postion and resume or CVs field
+        document.getElementById("uploadForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            sessionStorage.setItem("Job position", options_.value); // Set the position to the session storage
+
+            const fileInput = document.getElementById("resume").files[0];
+            if (fileInput){
+                const reader = new FileReader();
+                
+                // Read the file as a data URL
+                reader.readAsDataURL(fileInput);
+                
+                reader.onload = function() {
+                    // Store the file data in session storage
+                    sessionStorage.setItem("Resume", reader.result);
+                };
+
+                reader.onerror = function() {
+                    console.error("Error reading file:", reader.error);
+                };
+            } 
+            else{
+                alert("Please select a file before submitting.");
+            }
+        });
+
+        btn.addEventListener('submit', () =>{
+            // if(name_.value === null)
+            //     alert("Please fill in your name");
+            // else if(email_.value === null)
+            //     alert("Please fill in your email");
+            // else if(phone_.value === null)
+            //     alert("Please fill in your phone number");
+            // else if(address_.value === null)
+            //     alert("Please fill in your address");
+            // else if(options_.value === null)
+            //     alert("Please select a job position");
+            // else if(fileInput === null)
+            //     alert("Please select a file");
+            // else
+            // {
+            //     // Send the form data to the server
+            //     alert("Sent");
+            // }
+            alert("Sent")
+        }
+        )
+
+    </script>
+</body>
+</html>
