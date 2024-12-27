@@ -44,7 +44,16 @@
             <div class="input_box" title="Select your resume or CVs" id="box6">
                 <input type="file" id="resume" name="resume" accept=".pdf, .doc, .docx" required style="padding-top: 17px; cursor: pointer;">
             </div>
-            <button type="submit" id="button">Submit</button>
+            <button type="submit" id="button" onclick="registered()" >Submit</button>
+
+            <!-- conformation -->
+            <div class="registerd_container">
+                <div>
+                    <h1>Uploaded Successfully</h1>
+                    <img src="check-mark.png" alt="">
+                    <p>Thank you for your response</p>
+                </div>
+            </div>
         </div>
     </form>
     <script>
@@ -158,27 +167,23 @@
             }
         });
 
-        btn.addEventListener('submit', () =>{
-            // if(name_.value === null)
-            //     alert("Please fill in your name");
-            // else if(email_.value === null)
-            //     alert("Please fill in your email");
-            // else if(phone_.value === null)
-            //     alert("Please fill in your phone number");
-            // else if(address_.value === null)
-            //     alert("Please fill in your address");
-            // else if(options_.value === null)
-            //     alert("Please select a job position");
-            // else if(fileInput === null)
-            //     alert("Please select a file");
-            // else
-            // {
-            //     // Send the form data to the server
-            //     alert("Sent");
-            // }
-            alert("Sent")
+        // Button
+        const registered= ()=>{
+            if(
+                document.getElementById("name").value.length > 0 &&
+                document.getElementById("email").value.length > 0 &&
+                document.getElementById("number").value.length > 0 &&
+                document.getElementById("address").value.length > 0 &&
+                document.getElementById("options").value.length > 0 &&
+                document.getElementById("resume").value.length > 0
+            ){
+                const page = document.getElementsByClassName("registerd_container")
+            page[0].style.display = "flex"
+            }
+            else{
+                alert("Please fill all the fields")
+            }
         }
-        )
 
     </script>
 </body>
